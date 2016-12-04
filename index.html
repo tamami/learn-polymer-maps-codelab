@@ -20,10 +20,17 @@
   <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
   <link rel="import" href="bower_components/paper-toast/paper-toast.html">
 
+  <!-- tambahan google maps -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="bower_components/google-map/google-map.html">
+  <link rel="import" href="bower_components/google-map/google-map-marker.html">
+  <link rel="import" href="bower_components/google-map/google-map-directions.html">
+  
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body unresolved>
+  <!--
   <paper-toolbar>
     <paper-icon-button icon="menu"></paper-icon-button>
     <span class="flex">PolymerMapsCodelab toolbar</span>
@@ -63,5 +70,26 @@
   </section>
 
   <script src="main.js"></script>
+  -->
+  <!-- ini buat tegal -->
+  <!--
+  <google-map latitude="-6.8580" longitude="109.1339" zoom="13"
+      api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0" disable-default-ui draggable="false">
+    <google-map-marker latitude"-6.858" longitude="109.1339" title="Go Giants!" draggable="true"></google-map-marker>
+  </google-map>
+  -->
+  <google-map latitude="37.77493" longitude="-122.41942" zoom="13"
+      api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0" disable-default-ui fit-to-marker>
+    <google-map-marker latitude"37.77493" longitude="-122.41942" title="Go Giants!" draggable="true"></google-map-marker>
+  </google-map>
+  <google-map-directions
+      start-address="San Fransisco" end-address="Mountain View" api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0"></google-map-directions>
+  
+  <script>
+    var gMap = document.querySelector('google-map');
+    gMap.addEventListener('api-load', function(e) {
+      document.querySelector('google-map-directions').map = this.map;
+    });
+  </script>
 </body>
 </html>
