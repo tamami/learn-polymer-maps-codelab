@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <!-- component for ui -->
+    <link rel="import" href="bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
+    <link rel="import" href="bower_components/paper-item/paper-icon-item.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+    
+    <!-- tambahan google maps -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="bower_components/google-map/google-map.html">
+    <link rel="import" href="bower_components/google-map/google-map-marker.html">
+    <link rel="import" href="bower_components/google-map/google-map-directions.html">
+  
+  
+    <!-- component for changing form of travel -->
+    <link rel="import" href="bower_components/iron-icons/maps-icons.html">
+    <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- styling for polymer tab -->
+    <style is="custom-style">
+      paper-tabs {
+        --paper-tabs-selection-bar-color: #0D47A1;
+        margin-top: 16px;
+      }
+      paper-tab {
+        --paper-tab-ink: #BBDEFB;
+      }
+      paper-tab iron-icon {
+        margin-right: 10px;
+      }
+      paper-tab.iron-selected {
+        background: rgb(66, 133, 244);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <template is="dom-bind">
+      <google-map map="{{map}}" latitude="37.77493" longitude="-122.41942" zoom="13"
+          api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0" disable-default-ui fit-to-marker>
+        <google-map-marker latitude"37.77493" longitude="-122.41942" title="Go Giants!" draggable="true"></google-map-marker>
+      </google-map>
+      <google-map-directions map="{{map}}"
+          start-address="{{start}}" end-address="{{end}}" api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0"
+          travel-mode="[[travelMode]]"></google-map-directions>
+  
+    
+    
+      <paper-card elevation="2"> <!--   elevation controls the amount of box shadow -->
+        <paper-icon-item>
+          <iron-icon icon="search" item-icon></iron-icon>
+          <paper-input label="Start Address" value="{{start}}"></paper-input>
+        </paper-icon-item>
+        <paper-icon-item>
+          <iron-icon icon="search" item-icon></iron-icon>
+          <paper-input label="End Address" value="{{end}}"></paper-input>
+        </paper-icon-item>
+        
+        <paper-tabs selected="0">
+          <paper-tab>
+            <iron-icon icon="maps:directions-car"></iron-icon>
+            <span>DRIVING</span>
+          </paper-tab>
+          <paper-tab>
+            <iron-icon icon="maps:directions-walk"></iron-icon>
+            <span>WALKING</span>
+          </paper-tab>
+          <paper-tab>
+            <iron-icon icon="maps:directions-bike"></iron-icon>
+            <span>BICYCLING</span>
+          </paper-tab>
+          <paper-tab>
+            <iron-icon icon="maps:directions-transit"></iron-icon>
+            <span>TRANSIT</span>
+          </paper-tab>
+        </paper-tabs>
+      </paper-card>
+    </template>
+  </body>
+</html>
