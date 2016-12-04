@@ -7,18 +7,36 @@
     <link rel="import" href="bower_components/paper-input/paper-input.html">
     <link rel="import" href="bower_components/paper-card/paper-card.html">
     
+    <!-- tambahan google maps -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="bower_components/google-map/google-map.html">
+    <link rel="import" href="bower_components/google-map/google-map-marker.html">
+    <link rel="import" href="bower_components/google-map/google-map-directions.html">
+  
+    
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <template is="dom-bind">
+      <google-map map="{{map}}" latitude="37.77493" longitude="-122.41942" zoom="13"
+          api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0" disable-default-ui fit-to-marker>
+        <google-map-marker latitude"37.77493" longitude="-122.41942" title="Go Giants!" draggable="true"></google-map-marker>
+      </google-map>
+      <google-map-directions map="{{map}}"
+          start-address="{{start}}" end-address="{{end}}" api-key="AIzaSyDe-uFZKOIMuDa6UEsuS_NUMPWUDCKViL0"></google-map-directions>
+  
+    
+    
     <paper-card elevation="2"> <!--   elevation controls the amount of box shadow -->
       <paper-icon-item>
         <iron-icon icon="search" item-icon></iron-icon>
-        <paper-input label="Start Address" value="San Fransisco"></paper-input>
+        <paper-input label="Start Address" value="{{start}}"></paper-input>
       </paper-icon-item>
       <paper-icon-item>
         <iron-icon icon="search" item-icon></iron-icon>
-        <paper-input label="End Address" value="Mountain View"></paper-input>
+        <paper-input label="End Address" value="{{end}}"></paper-input>
       </paper-icon-item>
     </paper-card>
+    </template>
   </body>
 </html>

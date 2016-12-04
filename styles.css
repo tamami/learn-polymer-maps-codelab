@@ -46,7 +46,7 @@ paper-button[right] {
 
 paper-card {
   position: absolute;
-  top: 25px;
+  bottom: 150px;
   left: 25px;
   z-index: 1;
 }
